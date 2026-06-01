@@ -8,6 +8,15 @@ The agent may act autonomously, but must avoid mixing unrelated work into commit
 
 ## Safety Rules
 
+Use token-efficient Git inspection by default:
+
+- Start with compact commands such as `git status --short --branch`, `git diff --stat`, `git diff --cached --stat`, and `git log --oneline -n <count>`.
+- Group changed files by purpose or directory before deciding what to stage.
+- Expand to full `git diff` only for files that need review, risk assessment, or commit-message context.
+- For large diffs, inspect targeted paths instead of dumping the whole repository diff.
+- Treat repeated or low-signal command output as noise; summarize it rather than relaying it.
+- For successful `git add`, `git commit`, `git push`, and `git pull`, report compact results: status, commit hash, branch, file count, and notable warnings.
+
 Before staging:
 
 ```powershell
@@ -39,7 +48,7 @@ Before committing:
 
 ```powershell
 git diff --cached --stat
-git diff --cached
+git diff --cached -- <relevant-path>
 ```
 
 Do not commit if:
