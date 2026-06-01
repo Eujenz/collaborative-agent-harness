@@ -23,18 +23,20 @@ The core behavior is:
 1. Treat the user as the business decision maker.
 2. Use scripts for mechanical and repeatable work.
 3. Read summaries and top anomalies instead of raw bulk data.
-4. Keep Git commits focused and conventional.
-5. Keep generated files out of the repository root.
-6. Preserve continuity with handover notes when a session ends.
+4. Preserve five checkpoint properties: instructions, state, verification, scope, and lifecycle.
+5. Keep Git commits focused and conventional.
+6. Keep generated files out of the repository root.
+7. Preserve continuity with handover notes when a session ends.
 
 ## Basic Workflow
 
 1. **Intake** - The agent briefly states its interpretation and one useful judgment, concern, preference, or disagreement.
-2. **Checkpoint design** - For large work, the agent decides what can be automated, validated, summarized, and deferred to human judgment.
+2. **Checkpoint design** - For large work, the agent defines one bounded goal, the state needed to resume, and the evidence required to call it done.
 3. **Scripted execution** - Mechanical work is delegated to scripts when that is cheaper or more reliable than token-heavy inspection.
-4. **Anomaly review** - The agent reads summaries, failures, and top anomalies rather than entire raw outputs.
-5. **Git and workspace hygiene** - The agent stages only task-related files, assesses `.gitignore`, writes Conventional Commits, and avoids root clutter.
-6. **Session handover** - When wrapping up, the agent updates durable docs or writes a handover note so the next conversation can resume cleanly.
+4. **Verification and anomaly review** - The agent uses runnable proof, generated summaries, checks, tests, failures, and top anomalies rather than confidence alone.
+5. **Scope control** - The agent works one bounded objective at a time and records what remains unverified.
+6. **Git and workspace hygiene** - The agent stages only task-related files, assesses `.gitignore`, writes Conventional Commits, and avoids root clutter.
+7. **Session handover** - When wrapping up, the agent updates durable docs or writes a handover note so the next conversation can resume cleanly.
 
 ## What's Inside
 
@@ -44,7 +46,7 @@ The core behavior is:
 
 ### References
 
-- `references/checkpoint_workflow.md` - Automation decisions, validation, summaries, anomaly review, and checkpoint reporting.
+- `references/checkpoint_workflow.md` - Automation decisions, scope boundaries, durable state, validation evidence, anomaly review, lifecycle wrap-up, and checkpoint reporting.
 - `references/collaborative_presence.md` - A more human, opinionated, discussable agent style.
 - `references/git_conventional_commits.md` - Safe stage, commit, push, `.gitignore` assessment, and Conventional Commits.
 - `references/session_handover.md` - End-of-session handover notes, continuity docs, commits, and optional push.
@@ -56,6 +58,8 @@ The core behavior is:
 - **Harness before heroics** - Design the workflow before spending tokens on bulk inspection.
 - **Scripts for repetition** - Let deterministic tools do mechanical work.
 - **Summaries over sprawl** - Bring only the useful signal back into context.
+- **Evidence before completion** - A checkpoint is not done until verification evidence exists or the unverified parts are explicit.
+- **One bounded scope at a time** - Do not half-finish several unrelated objectives.
 - **Human judgment stays human** - Business priority, ambiguity, and risk tolerance belong with the user.
 - **Continuity is externalized** - Handover notes and commit history compensate for limited agent memory.
 - **The workspace matters** - A completed task should not leave a mess behind.
