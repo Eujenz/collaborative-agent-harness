@@ -17,6 +17,24 @@ git branch --show-current
 
 Stage only files related to the completed task. If unrelated modified files exist, leave them unstaged and mention them.
 
+Before staging untracked files, assess whether they should be committed, moved, deleted, or ignored.
+
+Consider adding files to `.gitignore` when they are:
+
+- local environment files, such as `.env`, `.env.local`, or machine-specific config
+- credentials, tokens, keys, certificates, or secret-bearing files
+- dependency folders, such as `node_modules/`, `.venv/`, or vendor caches not owned by the repo
+- build outputs, such as `dist/`, `build/`, `out/`, `target/`, or compiled binaries
+- tool caches, such as `.pytest_cache/`, `.mypy_cache/`, `.ruff_cache/`, or `.next/`
+- logs, temporary files, scratch outputs, local reports, or generated artifacts that are not durable deliverables
+- OS/editor files, such as `.DS_Store`, `Thumbs.db`, or `.vscode/` when not intentionally shared
+
+Do not add files to `.gitignore` blindly. First check existing project conventions and whether the file is a real deliverable.
+
+If a generated artifact is useful to keep but not source-controlled, move it to an appropriate ignored folder such as `tmp/`, `.tmp/`, or a project-specific artifacts directory.
+
+If `.gitignore` is changed, include the reason in the commit or completion report.
+
 Before committing:
 
 ```powershell
@@ -30,6 +48,7 @@ Do not commit if:
 - The working tree contains conflicts.
 - The change has not been verified when verification is practical.
 - The commit would include secrets, credentials, generated junk, or local-only config.
+- Untracked files have not been classified as commit, ignore, archive, or delete.
 
 Push only when:
 

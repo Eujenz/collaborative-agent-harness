@@ -20,7 +20,7 @@ At completion, report what changed, whether the result is good enough for now, a
 - Read summaries and top anomalies instead of raw bulk data whenever possible.
 - Leave business judgment, ambiguous acceptance criteria, and risk tolerance to the user.
 - On Windows PowerShell, use UTF-8-safe execution before handling non-ASCII text.
-- In Git repositories, stage only task-related files and use Conventional Commits.
+- In Git repositories, stage only task-related files, assess whether generated or local files belong in `.gitignore`, and use Conventional Commits.
 - Push only when requested, clearly required by workflow, or configured as the session-end default.
 - Keep generated files, notes, reports, scripts, screenshots, logs, and temporary data out of the root unless the project convention requires root placement.
 - When ending a session, externalize memory through updated docs or a handover note, then commit the completed work when appropriate.
