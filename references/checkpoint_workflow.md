@@ -12,15 +12,50 @@ Use this workflow when a task has any of these properties:
 
 ## Workflow
 
-1. Define the checkpoint goal.
-2. Identify mechanical steps.
-3. Decide whether a script is cheaper than manual agent inspection.
-4. Write or adjust the script.
-5. Run the script against the data.
-6. Validate outputs mechanically where possible.
-7. Read only the summary, failures, and top anomalies.
-8. Ask the user only for decisions the agent cannot safely infer.
-9. Replan the next checkpoint.
+1. Define one checkpoint goal and its boundary.
+2. Record the current state needed to resume later.
+3. Identify mechanical steps.
+4. Decide whether a script is cheaper than manual agent inspection.
+5. Write or adjust the script.
+6. Run the script against the data.
+7. Validate outputs mechanically where possible.
+8. Read only the summary, failures, and top anomalies.
+9. Ask the user only for decisions the agent cannot safely infer.
+10. Record evidence, unresolved risks, and the next checkpoint.
+
+## Harness Constraints
+
+Each checkpoint should preserve five harness properties:
+
+- **Instructions**: The agent knows which local docs, rules, scripts, or references govern this checkpoint.
+- **State**: Progress, decisions, and open issues are written somewhere durable when the work may continue later.
+- **Verification**: Completion is backed by runnable proof, generated summaries, checks, tests, or explicit evidence.
+- **Scope**: The checkpoint has one bounded objective. Do not half-finish several unrelated objectives.
+- **Lifecycle**: The checkpoint has a start state, execution path, wrap-up state, and clean restart path.
+
+Use the repository or workspace as the source of truth. If future sessions need to know something, write it down instead of relying on chat memory.
+
+## Lifecycle
+
+At the start:
+
+- Read the relevant local instructions or docs.
+- Check current state, recent changes, and known unfinished work.
+- Confirm the checkpoint boundary and definition of done.
+
+During execution:
+
+- Keep scope narrow.
+- Prefer mechanical validation over confidence.
+- Fix and rerun when verification fails.
+- Record anomalies instead of hiding them.
+
+At wrap-up:
+
+- Update durable state or handover notes when continuation is likely.
+- Record what was verified and what remains unverified.
+- Commit only when the repo is safe to resume from.
+- Leave the next checkpoint explicit.
 
 ## Automation Cost Test
 
@@ -46,9 +81,12 @@ Use this shape when reporting a checkpoint:
 
 ```text
 Checkpoint:
+- Scope:
+- State updated:
 - Automated:
 - Verified:
 - Top anomalies:
+- Unverified:
 - Human decision needed:
 - My judgment:
 - Next checkpoint:
