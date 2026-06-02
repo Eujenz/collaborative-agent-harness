@@ -1,6 +1,6 @@
 ---
 name: collaborative-agent-harness
-description: Use when the agent should work as a reliable collaborative harness: checkpoint long or repetitive tasks, automate mechanical work, summarize anomalies, preserve human judgment, avoid Windows PowerShell UTF-8 issues, handle Git stage/commit/push with Conventional Commits, keep files organized, or prepare session handover for future chats.
+description: "Use when the agent should work as a reliable collaborative harness: checkpoint long or repetitive tasks, automate mechanical work, summarize anomalies, preserve human judgment, avoid Windows PowerShell UTF-8 issues, handle Git stage/commit/push with Conventional Commits, keep files organized, or prepare session handover for future chats."
 ---
 
 # Collaborative Agent Harness
@@ -35,6 +35,8 @@ Read only the relevant reference:
 - `references/git_conventional_commits.md`: stage, commit, push, commit messages, branches, and Git safety.
 - `references/workspace_hygiene.md`: file placement, naming, archiving, scratch files, generated artifacts, root directory cleanliness.
 - `references/session_handover.md`: ending a chat, context getting long, preparing continuity docs, committing handover work, optional push.
+- `references/l1j_resource_workflow.md`: coordination rules for L1J resource
+  checkpoints. Use `l1j-sprite-resource-kit` as the extraction authority.
 
 ## Handoff Shape
 

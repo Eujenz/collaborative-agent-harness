@@ -1,0 +1,4 @@
+interface:
+  display_name: "Collaborative Agent Harness"
+  short_description: "Checkpoint long work, automate checks, keep Git clean, and preserve handoff state."
+  default_prompt: "Use $collaborative-agent-harness to plan checkpointed work, run mechanical validation, keep Git scope clean, and report a durable handoff."
