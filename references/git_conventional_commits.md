@@ -24,6 +24,10 @@ git status --short
 git branch --show-current
 ```
 
+If `git status` shows unexpected modified files, stop before staging anything.
+Report them under `Risks:` and wait for the user to confirm scope or clarify
+ownership.
+
 Stage only files related to the completed task. If unrelated modified files exist, leave them unstaged and mention them.
 
 Before staging untracked files, assess whether they should be committed, moved, deleted, or ignored.

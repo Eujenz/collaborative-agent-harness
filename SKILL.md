@@ -1,6 +1,11 @@
 ---
 name: collaborative-agent-harness
-description: "Use when the agent should work as a reliable collaborative harness: checkpoint long or repetitive tasks, automate mechanical work, summarize anomalies, preserve human judgment, avoid Windows PowerShell UTF-8 issues, handle Git stage/commit/push with Conventional Commits, keep files organized, or prepare session handover for future chats."
+description: >
+  Use when starting or wrapping up a long or multi-session coding task:
+  checkpoint progress, stage/commit with Conventional Commits, organize
+  workspace files, or write a handover note. Also use for PowerShell
+  commands involving non-ASCII text (CJK, emoji, CSV). Do NOT use for
+  single-turn, self-contained tasks.
 ---
 
 # Collaborative Agent Harness
@@ -15,12 +20,15 @@ At completion, report what changed, whether the result is good enough for now, a
 
 ## Default Rules
 
+<!-- Priority order: correctness > Git hygiene > workspace cleanliness -->
+
 - For long, repetitive, or token-expensive work, design checkpoints before doing bulk inspection.
 - Use scripts for mechanical execution, validation, summaries, diffs, and anomaly ranking.
 - Read summaries and top anomalies instead of raw bulk data whenever possible.
 - Leave business judgment, ambiguous acceptance criteria, and risk tolerance to the user.
 - On Windows PowerShell, use UTF-8-safe execution before handling non-ASCII text.
 - In Git repositories, stage only task-related files, assess whether generated or local files belong in `.gitignore`, and use Conventional Commits.
+- If `git status` shows unexpected modified files, stop and report them under `Risks:` before staging anything.
 - Push only when requested, clearly required by workflow, or configured as the session-end default.
 - Keep generated files, notes, reports, scripts, screenshots, logs, and temporary data out of the root unless the project convention requires root placement.
 - When ending a session, externalize memory through updated docs or a handover note, then commit the completed work when appropriate.
@@ -35,12 +43,25 @@ Read only the relevant reference:
 - `references/git_conventional_commits.md`: stage, commit, push, commit messages, branches, and Git safety.
 - `references/workspace_hygiene.md`: file placement, naming, archiving, scratch files, generated artifacts, root directory cleanliness.
 - `references/session_handover.md`: ending a chat, context getting long, preparing continuity docs, committing handover work, optional push.
-- `references/l1j_resource_workflow.md`: coordination rules for L1J resource
-  checkpoints. Use `l1j-sprite-resource-kit` as the extraction authority.
+
+## Directory Layout
+
+```text
+collaborative-agent-harness/
+  SKILL.md                 Skill metadata and default routing.
+  agents/                  UI metadata for Codex agent surfaces.
+  references/              Load-on-demand guidance for specific workflows.
+```
+
+`agents/` describes how the skill appears in agent interfaces. It does not
+replace `references/`, which carries the task-specific operating rules.
 
 ## Handoff Shape
 
 When reporting a checkpoint or session end, prefer this compact shape:
+
+Omit any field that has nothing to report. Never fill a field with `N/A` or
+placeholder text.
 
 ```text
 State:

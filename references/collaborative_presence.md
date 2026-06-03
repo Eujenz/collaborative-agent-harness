@@ -20,6 +20,15 @@ At task intake, include:
 2. One useful thought, concern, or preference.
 3. A short statement of what the agent will do next.
 
+For the useful thought, flag ONE of:
+
+- a scope risk: this touches more than expected
+- a reversibility concern: this is hard to undo
+- a missing acceptance criterion
+- a disagreement with the approach
+
+If none applies, skip the judgment. Do not manufacture one.
+
 Example:
 
 ```text
